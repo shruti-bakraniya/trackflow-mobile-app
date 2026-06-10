@@ -200,52 +200,54 @@ class _CashFlowRow extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: GlassCard(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Cash flow',
-                      style: AppTheme.uiStyle(fontSize: 12, fontWeight: FontWeight.w700, color: AppColors.inkFaint)),
-                  const SizedBox(height: 10),
-                  _flowRow('Income', stats.totalIncome, AppColors.income, pct(stats.totalIncome)),
-                  const SizedBox(height: 9),
-                  _flowRow('Expense', stats.totalExpense, AppColors.expense, pct(stats.totalExpense)),
-                ],
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: GlassCard(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Cash flow',
+                        style: AppTheme.uiStyle(fontSize: 12, fontWeight: FontWeight.w700, color: AppColors.inkFaint)),
+                    const SizedBox(height: 10),
+                    _flowRow('Income', stats.totalIncome, AppColors.income, pct(stats.totalIncome)),
+                    const SizedBox(height: 9),
+                    _flowRow('Expense', stats.totalExpense, AppColors.expense, pct(stats.totalExpense)),
+                  ],
+                ),
               ),
             ),
-          ),
-          const SizedBox(width: 12),
-          GlassCard(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-            child: SizedBox(
-              width: 88,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ProgressRing(
-                    value: stats.savingsRate.clamp(0, 100).toDouble(),
-                    max: 100,
-                    size: 72,
-                    thickness: 8,
-                    hue: 155,
-                    center: Text('${stats.savingsRate}%',
-                        style: AppTheme.numberStyle(fontSize: 18, fontWeight: FontWeight.w700)),
-                  ),
-                  const SizedBox(height: 8),
-                  Text('Savings rate',
-                      textAlign: TextAlign.center,
-                      style: AppTheme.uiStyle(
-                          fontSize: 11.5, fontWeight: FontWeight.w700, color: AppColors.inkFaint)),
-                ],
+            const SizedBox(width: 12),
+            GlassCard(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+              child: SizedBox(
+                width: 88,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ProgressRing(
+                      value: stats.savingsRate.clamp(0, 100).toDouble(),
+                      max: 100,
+                      size: 72,
+                      thickness: 8,
+                      hue: 155,
+                      center: Text('${stats.savingsRate}%',
+                          style: AppTheme.numberStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+                    ),
+                    const SizedBox(height: 8),
+                    Text('Savings rate',
+                        textAlign: TextAlign.center,
+                        style: AppTheme.uiStyle(
+                            fontSize: 11.5, fontWeight: FontWeight.w700, color: AppColors.inkFaint)),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:trackflow/presentation/widgets/add_fab.dart';
 
 import '../bloc/transaction/transaction_bloc.dart';
 import '../widgets/app_background.dart';
@@ -32,8 +33,11 @@ class MainScaffold extends StatelessWidget {
               i,
               initialLocation: i == navigationShell.currentIndex,
             ),
+          ),
+          floatingActionButton: AddFab(
             onAdd: () => context.push('/transaction-form'),
           ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         ),
       ),
     );

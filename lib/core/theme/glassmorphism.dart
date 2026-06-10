@@ -46,15 +46,15 @@ class GlassCard extends StatelessWidget {
           child: Stack(
             children: [
               if (showSheen)
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  child: FractionallySizedBox(
-                    heightFactor: 0.34,
-                    widthFactor: 1,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(gradient: AppGradients.glassSheen),
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: FractionallySizedBox(
+                      heightFactor: 0.34,
+                      widthFactor: 1,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(gradient: AppGradients.glassSheen),
+                      ),
                     ),
                   ),
                 ),

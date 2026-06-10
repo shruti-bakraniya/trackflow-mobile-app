@@ -334,117 +334,120 @@ class _BudgetEditSheetState extends State<_BudgetEditSheet> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
       ),
       padding: EdgeInsets.fromLTRB(22, 14, 22, 36 + MediaQuery.of(context).viewInsets.bottom),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 40,
-            height: 5,
-            decoration: BoxDecoration(
-              color: AppColors.ink.withValues(alpha: 0.18),
-              borderRadius: BorderRadius.circular(99),
-            ),
-          ),
-          const SizedBox(height: 18),
-          Row(
-            children: [
-              CategoryAvatar(categoryId: widget.categoryId, size: 50),
-              const SizedBox(width: 13),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(cat.label, style: AppTheme.uiStyle(fontSize: 19, fontWeight: FontWeight.w800)),
-                  Text('Monthly limit',
-                      style: AppTheme.uiStyle(
-                          fontSize: 12.5, fontWeight: FontWeight.w600, color: AppColors.inkFaint)),
-                ],
+      child: SafeArea(
+        top: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 40,
+              height: 5,
+              decoration: BoxDecoration(
+                color: AppColors.ink.withValues(alpha: 0.18),
+                borderRadius: BorderRadius.circular(99),
               ),
-            ],
-          ),
-          const SizedBox(height: 22),
-          Text('\$${_val.round()}',
-              style: AppTheme.numberStyle(fontSize: 46, fontWeight: FontWeight.w700, color: AppColors.accent)),
-          const SizedBox(height: 6),
-          Text('${Formatters.money(widget.spent, cents: false)} spent · $label',
-              style: AppTheme.uiStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: color)),
-          const SizedBox(height: 14),
-          SliderTheme(
-            data: SliderTheme.of(context).copyWith(
-              activeTrackColor: color,
-              thumbColor: Colors.white,
-              overlayColor: color.withValues(alpha: 0.15),
-              inactiveTrackColor: AppColors.ink.withValues(alpha: 0.12),
-              trackHeight: 6,
             ),
-            child: Slider(
-              min: 50,
-              max: 1000,
-              divisions: 95,
-              value: _val.clamp(50, 1000),
-              onChanged: (v) => setState(() => _val = v),
+            const SizedBox(height: 18),
+            Row(
+              children: [
+                CategoryAvatar(categoryId: widget.categoryId, size: 50),
+                const SizedBox(width: 13),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(cat.label, style: AppTheme.uiStyle(fontSize: 19, fontWeight: FontWeight.w800)),
+                    Text('Monthly limit',
+                        style: AppTheme.uiStyle(
+                            fontSize: 12.5, fontWeight: FontWeight.w600, color: AppColors.inkFaint)),
+                  ],
+                ),
+              ],
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('\$50', style: AppTheme.uiStyle(fontSize: 10.5, color: AppColors.inkFaint)),
-              Text('\$1,000', style: AppTheme.uiStyle(fontSize: 10.5, color: AppColors.inkFaint)),
-            ],
-          ),
-          const SizedBox(height: 18),
-          Row(
-            children: [200, 350, 500].map((v) {
-              final selected = _val.round() == v;
-              return Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: GestureDetector(
-                    onTap: () => setState(() => _val = v.toDouble()),
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.symmetric(vertical: 9),
-                      decoration: BoxDecoration(
-                        color: selected ? AppColors.accent.withValues(alpha: 0.15) : Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: AppColors.glassStroke),
+            const SizedBox(height: 22),
+            Text('\$${_val.round()}',
+                style: AppTheme.numberStyle(fontSize: 46, fontWeight: FontWeight.w700, color: AppColors.accent)),
+            const SizedBox(height: 6),
+            Text('${Formatters.money(widget.spent, cents: false)} spent · $label',
+                style: AppTheme.uiStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: color)),
+            const SizedBox(height: 14),
+            SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                activeTrackColor: color,
+                thumbColor: Colors.white,
+                overlayColor: color.withValues(alpha: 0.15),
+                inactiveTrackColor: AppColors.ink.withValues(alpha: 0.12),
+                trackHeight: 6,
+              ),
+              child: Slider(
+                min: 50,
+                max: 1000,
+                divisions: 95,
+                value: _val.clamp(50, 1000),
+                onChanged: (v) => setState(() => _val = v),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('\$50', style: AppTheme.uiStyle(fontSize: 10.5, color: AppColors.inkFaint)),
+                Text('\$1,000', style: AppTheme.uiStyle(fontSize: 10.5, color: AppColors.inkFaint)),
+              ],
+            ),
+            const SizedBox(height: 18),
+            Row(
+              children: [200, 350, 500].map((v) {
+                final selected = _val.round() == v;
+                return Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: GestureDetector(
+                      onTap: () => setState(() => _val = v.toDouble()),
+                      child: Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(vertical: 9),
+                        decoration: BoxDecoration(
+                          color: selected ? AppColors.accent.withValues(alpha: 0.15) : Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: AppColors.glassStroke),
+                        ),
+                        child: Text('\$$v',
+                            style: AppTheme.uiStyle(fontSize: 13, fontWeight: FontWeight.w700)),
                       ),
-                      child: Text('\$$v',
-                          style: AppTheme.uiStyle(fontSize: 13, fontWeight: FontWeight.w700)),
                     ),
                   ),
+                );
+              }).toList(),
+            ),
+            const SizedBox(height: 22),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  context.read<BudgetBloc>().add(BudgetSet(Budget(categoryId: widget.categoryId, limit: _val)));
+                  Navigator.of(context).pop();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.accent,
+                  foregroundColor: Colors.white,
+                  elevation: 0,
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                 ),
-              );
-            }).toList(),
-          ),
-          const SizedBox(height: 22),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                context.read<BudgetBloc>().add(BudgetSet(Budget(categoryId: widget.categoryId, limit: _val)));
-                Navigator.of(context).pop();
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.accent,
-                foregroundColor: Colors.white,
-                elevation: 0,
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                child: Text(widget.current != null ? 'Update limit' : 'Set limit',
+                    style: AppTheme.uiStyle(fontSize: 15.5, fontWeight: FontWeight.w800, color: Colors.white)),
               ),
-              child: Text(widget.current != null ? 'Update limit' : 'Set limit',
-                  style: AppTheme.uiStyle(fontSize: 15.5, fontWeight: FontWeight.w800, color: Colors.white)),
             ),
-          ),
-          if (widget.current != null)
-            TextButton(
-              onPressed: () {
-                context.read<BudgetBloc>().add(BudgetRemoved(widget.categoryId));
-                Navigator.of(context).pop();
-              },
-              child: Text('Remove budget',
-                  style: AppTheme.uiStyle(fontSize: 13.5, fontWeight: FontWeight.w700, color: AppColors.expense)),
-            ),
-        ],
+            if (widget.current != null)
+              TextButton(
+                onPressed: () {
+                  context.read<BudgetBloc>().add(BudgetRemoved(widget.categoryId));
+                  Navigator.of(context).pop();
+                },
+                child: Text('Remove budget',
+                    style: AppTheme.uiStyle(fontSize: 13.5, fontWeight: FontWeight.w700, color: AppColors.expense)),
+              ),
+          ],
+        ),
       ),
     );
   }

@@ -19,9 +19,7 @@ import 'presentation/bloc/transaction/transaction_bloc.dart';
 
 /// Manual dependency-injection container.
 ///
-/// We wire the object graph by hand (rather than pulling in a service-locator
-/// package) to honour the project's "verified-publisher-only" dependency
-/// constraint. Construct it once in `main`, then read blocs/use cases from it.
+/// Construct it once in `main`, then read blocs/use cases from it.
 /// Lower layers never know about the layers above them — the container is the
 /// single place where concrete implementations are bound to abstractions.
 class InjectionContainer {
