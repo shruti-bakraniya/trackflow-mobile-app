@@ -1,6 +1,6 @@
 # TrackFlow
 
-[Download Android APK](https://github.com/shruti-bakraniya/trackflow-mobile-app/releases/download/v0.0.1/app-release.apk)
+[Download Android APK](https://github.com/shruti-bakraniya/trackflow-mobile-app/releases/download/v0.0.1/trackflow_v1.apk)
 
 > A glassmorphic budget & expense tracker built with **Clean Architecture + BLoC** in Flutter.
 
