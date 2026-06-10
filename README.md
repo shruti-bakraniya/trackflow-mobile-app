@@ -1,5 +1,7 @@
 # TrackFlow
 
+[Download Android APK](https://github.com/shruti-bakraniya/trackflow-mobile-app/releases/download/v0.0.1/app-release.apk)
+
 > A glassmorphic budget & expense tracker built with **Clean Architecture + BLoC** in Flutter.
 
 TrackFlow lets you log income and expenses, set per-category monthly budgets, and visualise spending trends — all persisted locally with SQLite and wrapped in a frosted-glass UI with smooth micro-animations.
