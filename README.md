@@ -8,11 +8,7 @@ navigation and **sqflite** local persistence.
 
 ## App Preview
 
-<p align="center">
-  <video src="assets/videos/walk_through.mp4" width="320" height="640" controls autoplay loop muted>
-    Your browser does not support the video tag.
-  </video>
-</p>
+![App Flow Walkthrough](assets/videos/walk_through.mp4)
 
 ## Architecture
 
